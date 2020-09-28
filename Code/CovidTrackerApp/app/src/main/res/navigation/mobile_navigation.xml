@@ -10,4 +10,9 @@
         android:name="com.example.covidtracker.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@id/covid_diag_frag"
+        android:name="com.example.covidtracker.CovidDiagFragment"
+        android:label="Do I have Covid-19?"
+        tools:layout="@layout/fragment_covid_diag" />
 </navigation>

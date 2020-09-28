@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
             Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration!!)
         NavigationUI.setupWithNavController(navigationView, navController)
+
+        val covidDiag = navigationView.menu.findItem(R.id.covid_diag_frag)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -18,7 +18,7 @@
 
             android:title="Live Stats" />
         <item
-
+            android:id="@+id/covid_diag_frag"
             android:title="Do I Have Covid-19?" />
         <item
 
