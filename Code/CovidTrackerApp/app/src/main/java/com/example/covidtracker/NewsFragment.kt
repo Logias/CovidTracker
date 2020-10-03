@@ -18,30 +18,6 @@ class NewsFragment : Fragment(R.layout.fragment_news){
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
     val TAG = "News Fragment"
-    /*override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer{ response->
-            when(response) {
-                is Resource.Success-> {
-                    hideProgressBar()
-                    response.data?.let { newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles)
-                    }
-                }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-                        Log.e(TAG, "An error occured: $message" )
-                    }
-                }
-            }
-        })
-        val root = inflater.inflate(R.layout.fragment_news, container, false)
-        return root
-    }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
