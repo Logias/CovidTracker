@@ -15,4 +15,8 @@
         android:name="com.example.covidtracker.CovidDiagFragment"
         android:label="Do I have Covid-19?"
         tools:layout="@layout/fragment_covid_diag" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.covidtracker.NewsFragment"
+        android:label="NewsFragment" />
 </navigation>

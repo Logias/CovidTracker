@@ -6,17 +6,26 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import com.example.covidtracker.db.ArticleDatabase
+import com.example.covidtracker.repository.NewsRepository
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
+    lateinit var viewModel: NewsViewModel
 
     private var mAppBarConfiguration: AppBarConfiguration? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val repository = NewsRepository(ArticleDatabase(this))  //instantiate repository and pass the database
+        val viewModelProviderFactory = NewsViewModelProviderFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+
         val myToolBar: Toolbar = findViewById(R.id.toolBar)
         setSupportActionBar(myToolBar)
         myToolBar.setTitleTextColor(Color.parseColor("#FFFFFF"))
