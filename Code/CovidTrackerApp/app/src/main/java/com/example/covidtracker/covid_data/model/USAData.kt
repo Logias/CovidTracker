@@ -31,7 +31,7 @@ data class CountryInfo(
 @Parcelize
 @Entity(tableName = "usa_table")
 data class USADataModel(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey val id: Int,
     @ColumnInfo val active: Int,
     @ColumnInfo val cases: Int,
     @ColumnInfo val country: String,

@@ -13,6 +13,6 @@ interface USADao {
     @Query("SELECT * FROM usa_table")
     fun getUSAdata(): LiveData<USADataModel>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(usaData: USADataModel)
 }
