@@ -1,5 +1,7 @@
 package com.example.covidtracker.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +53,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             //refers to the item view
             setOnClickListener{
                 onItemClickListener?.let {it(article)}  //checks to see the listener is not null, if not null then call the lambda function with the current article
+                val openURL = Intent(Intent.ACTION_VIEW)
+                openURL.data = Uri.parse(article.url)
+                context.startActivity(openURL)
             }
         }
     }
