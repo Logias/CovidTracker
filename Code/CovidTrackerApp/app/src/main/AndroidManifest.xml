@@ -6,38 +6,27 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label=""
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="CovidTracker"
+        android:roundIcon="@mipmap/ic_covidlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--android:theme="@style/AppTheme"!-->
+        <activity android:name=".SplashScreenActivity">
 
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.VIEW" />
 
-
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="11910000" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAqzK1raHl0T4Dm5Dw6c2RmHYIEBh8iyNY" />
-
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
         <activity android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation = "portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation = "portrait"/>
     </application>
 
 </manifest>
