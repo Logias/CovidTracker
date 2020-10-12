@@ -21,7 +21,7 @@
             android:id="@+id/covid_diag_frag"
             android:title="Do I Have Covid-19?" />
         <item
-
+            android:id="@+id/charity_frag"
             android:title="@string/menu_charity" />
 
         <item
