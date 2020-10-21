@@ -9,14 +9,16 @@ import com.example.covidtracker.covid_data.network.Service
 
 class CovidDataRepository(private val usaDao: USADao) {
 
-    suspend fun fetchUSAData() {
+    suspend fun fetchUSAData(): Boolean {
 
-        try {
+        return try {
             val usaResponse = Service.covidApi.getUSAData()
             val usaData = usaResponse.asUSADataModel()
             usaDao.insert(usaData)
+            true
         } catch (error: Exception) {
             Log.e("DEBUG:CovidDataRepository", error.message.toString())
+            false
         }
     }
 

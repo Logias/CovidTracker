@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#1768B4</color>
     <color name="colorAccent">#186FC1</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    // pie chart colors
+    <color name="active">#5472d3</color>
+    <color name="recovered">#43a047</color>
+    <color name="deaths">#e53935</color>
 </resources>

@@ -1,82 +1,65 @@
 package com.example.covidtracker.covid_data
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.covidtracker.R
-import com.example.covidtracker.covid_data.database.USADatabase
-import com.example.covidtracker.covid_data.repo.CovidDataRepository
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.covidtracker.databinding.FragmentCovidDataBinding
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
+import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
 
 class CovidDataFragment : Fragment() {
 
     private lateinit var binding: FragmentCovidDataBinding
 
-    private val usaDao by lazy {
-        USADatabase.getInstance(requireContext()).usaDao
-    }
-
-    private val repository: CovidDataRepository by lazy {
-        CovidDataRepository(usaDao)
-    }
-
-    private val covidDataViewModel by lazy {
-        val factory = CovidDataViewModelFactory(repository)
-        ViewModelProvider(this, factory).get(CovidDataViewModel::class.java)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_covid_data, container, false)
+        binding = FragmentCovidDataBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentCovidDataBinding.bind(view)
-        observeUSAData()
+        setupViewPaper()
     }
 
-    private fun observeUSAData() {
-        covidDataViewModel.usaData?.observe(viewLifecycleOwner, Observer { usaData ->
+    // setup the tablayout and viewpager
+    private fun setupViewPaper() {
+        var adapter = FeedPagerAdapter(childFragmentManager,lifecycle)
+        binding.feedViewPager.adapter = adapter
 
-            usaData?.apply {
-                // using German Locale for dot separator
-                val nf = NumberFormat.getInstance(Locale.GERMAN)
+        var tabTitles = arrayOf("Country","States")
 
-                binding.population.text =  nf.format(population)
-                binding.totalCases.text = nf.format(cases)
-                binding.activeCases.text = nf.format(active)
-                binding.newCases.text = nf.format(todayCases)
-                binding.newDeaths.text = nf.format(todayDeaths)
-                binding.totalDeaths.text = nf.format(deaths)
-                binding.newRecovered.text = nf.format(todayRecovered)
-                binding.totalRecovered.text = nf.format(recovered)
-                binding.lastUpdated.text = getDateTime(updated)
+        TabLayoutMediator(binding.tabLayout, binding.feedViewPager){ tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
 
-            } ?: Log.d("DEBUG:CovidDataFragment", "usaData is Null")
-
-        })
     }
 
-    private fun getDateTime(updated: Long): String {
-        val sdf = SimpleDateFormat("MMM dd, YYYY '@' hh:mm a", Locale.ROOT)
-        val dateTime = Date(updated)
-        return sdf.format(dateTime)
+}
+
+// pager adapter for the viewpager
+class FeedPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
+
+    // the two fragments inside the viewpager, the user feed and the friends feed
+    private val fragments:ArrayList<Fragment> = arrayListOf(
+        CountryDataFragment(),
+        StatesDataFragment()
+    )
+
+    override fun getItemCount(): Int {
+        return fragments.size
     }
 
-
-
-
-
+    override fun createFragment(position: Int): Fragment {
+        return fragments[position]
+    }
 }

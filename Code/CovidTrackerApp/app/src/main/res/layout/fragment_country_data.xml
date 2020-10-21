@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="16dp"
+        app:strokeColor="#D5D5D5"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/country_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="United States"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/flag"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/country_label"
+                app:layout_constraintStart_toEndOf="@id/country_label"
+                app:layout_constraintTop_toTopOf="@id/country_label" />
+
+            <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
+                android:id="@+id/toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:borderRadius="16dp"
+                app:borderWidth="1dp"
+                app:layout_constraintBottom_toTopOf="@id/pie_chart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/country_label"
+                app:textToggleLeft="All"
+                app:textToggleRight="Today" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toggle" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".6" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#D5D5D5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pie_chart" />
+
+            <TextView
+                android:id="@+id/total_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:text="Total Statistics"
+                android:textSize="18sp"
+
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+
+            <TextView
+                android:id="@+id/total_cases_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cases"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_cases"
+                app:layout_constraintStart_toStartOf="@id/total_cases"
+                app:layout_constraintTop_toBottomOf="@id/total_label" />
+
+            <TextView
+                android:id="@+id/total_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100,000"
+                android:textColor="@color/active"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@id/total_recovered"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_cases_label"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"/>
+
+            <TextView
+                android:id="@+id/total_recovered_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Recovered"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_recovered"
+                app:layout_constraintStart_toStartOf="@id/total_recovered"
+                app:layout_constraintTop_toBottomOf="@id/total_label" />
+
+            <TextView
+                android:id="@+id/total_recovered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50,000"
+                android:textColor="@color/recovered"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/total_deaths"
+                app:layout_constraintStart_toEndOf="@id/total_cases"
+                app:layout_constraintTop_toBottomOf="@id/total_recovered_label" />
+
+            <TextView
+                android:id="@+id/total_deaths_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Deaths"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_deaths"
+                app:layout_constraintStart_toStartOf="@id/total_deaths"
+                app:layout_constraintTop_toBottomOf="@id/total_label" />
+
+            <TextView
+                android:id="@+id/total_deaths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20,000"
+                android:textColor="@color/deaths"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/total_recovered"
+                app:layout_constraintTop_toBottomOf="@id/total_deaths_label" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#D5D5D5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_recovered" />
+
+
+            <TextView
+                android:id="@+id/today_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:text="Today's Statistics"
+                android:textSize="18sp"
+
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+
+            <TextView
+                android:id="@+id/today_cases_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cases"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_cases_label"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="@id/total_cases_label"
+                app:layout_constraintTop_toBottomOf="@id/today_label" />
+
+            <TextView
+                android:id="@+id/today_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100,000"
+                android:textColor="@color/active"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/today_cases_label"
+                app:layout_constraintStart_toStartOf="@id/today_cases_label"
+                app:layout_constraintTop_toBottomOf="@id/today_cases_label" />
+
+            <TextView
+                android:id="@+id/today_recovered_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Recovered"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_recovered_label"
+                app:layout_constraintStart_toStartOf="@id/total_recovered_label"
+                app:layout_constraintTop_toBottomOf="@id/today_label" />
+
+            <TextView
+                android:id="@+id/today_recovered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50,000"
+                android:textColor="@color/recovered"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/today_recovered_label"
+                app:layout_constraintStart_toStartOf="@id/today_recovered_label"
+                app:layout_constraintTop_toBottomOf="@id/today_recovered_label" />
+
+            <TextView
+                android:id="@+id/today_deaths_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Deaths"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/total_deaths_label"
+                app:layout_constraintStart_toStartOf="@id/total_deaths_label"
+                app:layout_constraintTop_toBottomOf="@id/today_label" />
+
+            <TextView
+                android:id="@+id/today_deaths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20,000"
+                android:textColor="@color/deaths"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/today_deaths_label"
+                app:layout_constraintStart_toStartOf="@id/today_deaths_label"
+                app:layout_constraintTop_toBottomOf="@id/today_deaths_label" />
+
+
+            <TextView
+                android:id="@+id/last_updated_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Last updated: "
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/last_updated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="October 3, 2020 @ 12:00 AM"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@id/last_updated_label"
+                app:layout_constraintTop_toTopOf="@id/last_updated_label" />
+
+            <ImageButton
+                android:id="@+id/refresh_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_refresh_24"
+                android:background="@null"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/last_updated_label"
+                app:layout_constraintBottom_toBottomOf="@id/last_updated_label"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</FrameLayout>
