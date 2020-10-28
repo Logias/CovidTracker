@@ -9,7 +9,7 @@
         android:id="@+id/covidDiagTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:text="Do I Have Covid-19?"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,6 @@
         app:layout_constraintTop_toBottomOf="@+id/chipGroup1Prompt">
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +56,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +63,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +70,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +77,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,7 +84,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +91,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +98,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,7 +105,6 @@
             android:theme="@style/Theme.MaterialComponents.Light" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:id="@+id/chip9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,7 +135,6 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip10"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Under 24 Hours"
@@ -152,7 +142,6 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip11"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2 - 4 Days"
@@ -160,7 +149,6 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip12"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1 Week"
@@ -168,7 +156,6 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip13"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2 Weeks"
@@ -176,7 +163,6 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip14"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Over 2 Weeks"
@@ -187,7 +173,7 @@
         android:id="@+id/agePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="8dp"
         android:text="What is your current age?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -198,23 +184,41 @@
         android:id="@+id/ageEntry"
         android:layout_width="39dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agePrompt"
-        android:imeOptions="actionDone"
-        android:imeActionLabel="Done"
-        android:maxLines="1"/>
+        app:layout_constraintTop_toBottomOf="@+id/agePrompt" />
 
     <Button
         android:id="@+id/analyzeButton"
-        android:layout_width="125dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Analyze"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Enter your email to save results (Optional)"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ageEntry" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

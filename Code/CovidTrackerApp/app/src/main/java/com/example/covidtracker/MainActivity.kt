@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
         val navigationView: NavigationView = findViewById(R.id.nav_view)
 
+
         mAppBarConfiguration = AppBarConfiguration.Builder(R.id.nav_home).setDrawerLayout(drawer).build()
 
         val navController =
@@ -42,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(navigationView, navController)
 
         val covidDiag = navigationView.menu.findItem(R.id.covid_diag_frag)
-        val charity = navigationView.menu.findItem(R.id.charity_frag)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
