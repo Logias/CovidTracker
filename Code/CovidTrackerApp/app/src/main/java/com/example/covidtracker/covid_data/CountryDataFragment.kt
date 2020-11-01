@@ -2,6 +2,7 @@ package com.example.covidtracker.covid_data
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.covidtracker.R
+import com.example.covidtracker.covid_data.database.StatesDatabase
 import com.example.covidtracker.covid_data.database.USADatabase
 import com.example.covidtracker.covid_data.model.USADataModel
 import com.example.covidtracker.covid_data.repo.CovidDataRepository
@@ -31,8 +33,8 @@ class CountryDataFragment : Fragment() {
 
     private val covidDataViewModel by lazy {
         val usaDao = USADatabase.getInstance(requireContext()).usaDao
-        val repository =
-            CovidDataRepository(usaDao)
+        val stateDao = StatesDatabase.getInstance(requireContext()).stateDao
+        val repository = CovidDataRepository(usaDao, stateDao)
         val factory = CovidDataViewModelFactory(repository)
         ViewModelProvider(this, factory).get(CovidDataViewModel::class.java)
     }
@@ -67,22 +69,25 @@ class CountryDataFragment : Fragment() {
 
     private fun observeUSAData() {
         covidDataViewModel.usaData.observe(viewLifecycleOwner, Observer { usaData ->
-            setupPieChart(usaData)
 
-            usaData.apply {
-                binding.totalCases.text = cases.toString()
-                binding.totalRecovered.text = recovered.toString()
-                binding.totalDeaths.text = deaths.toString()
-                binding.todayCases.text = todayCases.toString()
-                binding.todayRecovered.text = todayRecovered.toString()
-                binding.todayDeaths.text = todayDeaths.toString()
-                binding.lastUpdated.text = getDateTime(updated)
+            if (usaData != null) {
+                setupPieChart(usaData)
+                usaData.apply {
+                    binding.totalCases.text = cases.toString()
+                    binding.totalRecovered.text = recovered.toString()
+                    binding.totalDeaths.text = deaths.toString()
+                    binding.todayCases.text = todayCases.toString()
+                    binding.todayRecovered.text = todayRecovered.toString()
+                    binding.todayDeaths.text = todayDeaths.toString()
+                    binding.lastUpdated.text = getDateTime(updated)
+                }
             }
 
         })
     }
 
     private fun setupPieChart(usaData: USADataModel) {
+
         val active = usaData.active.toFloat()
         val recovered = usaData.recovered.toFloat()
         val deaths = usaData.deaths.toFloat()
@@ -198,7 +203,7 @@ class CountryDataFragment : Fragment() {
 
     private fun getDateTime(updated: Long): String {
         val sdf = SimpleDateFormat("MMM dd, YYYY '@' hh:mm a z", Locale.US)
-        sdf.timeZone = TimeZone.getTimeZone("GMT")
+//        sdf.timeZone = TimeZone.getTimeZone("GMT")
         val dateTime = Date(updated)
         return sdf.format(dateTime)
     }

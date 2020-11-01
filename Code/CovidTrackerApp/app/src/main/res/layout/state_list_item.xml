@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/gray"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/state_flag"
+            android:layout_width="100px"
+            android:layout_height="100px"
+
+            android:src="@drawable/california"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/state_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="California"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/state_flag"
+            app:layout_constraintTop_toTopOf="@id/state_flag"
+            app:layout_constraintBottom_toBottomOf="@id/state_flag"/>
+
+        <TextView
+            android:id="@+id/total_cases_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Cases"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/total_recovered_label"
+            app:layout_constraintTop_toBottomOf="@id/state_name"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
+
+        <TextView
+            android:id="@+id/total_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100,000"
+            android:textColor="@color/active"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/total_cases_label"
+            app:layout_constraintEnd_toEndOf="@id/total_cases_label"
+            app:layout_constraintTop_toBottomOf="@id/total_cases_label" />
+
+        <TextView
+            android:id="@+id/total_recovered_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Recovered"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/total_deaths_label"
+            app:layout_constraintStart_toEndOf="@id/total_cases_label"
+            app:layout_constraintTop_toBottomOf="@id/state_name"
+            />
+
+        <TextView
+            android:id="@+id/total_recovered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50,000"
+            android:textColor="@color/recovered"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/total_recovered_label"
+            app:layout_constraintStart_toStartOf="@id/total_recovered_label"
+            app:layout_constraintTop_toBottomOf="@id/total_recovered_label" />
+
+        <TextView
+            android:id="@+id/total_deaths_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Deaths"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/total_recovered_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/state_name" />
+
+        <TextView
+            android:id="@+id/total_deaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20,000"
+            android:textColor="@color/deaths"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/total_deaths_label"
+            app:layout_constraintStart_toStartOf="@id/total_deaths_label"
+            app:layout_constraintTop_toBottomOf="@id/total_deaths_label" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
