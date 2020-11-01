@@ -15,12 +15,12 @@ class NewsViewModel (val newsRepository: NewsRepository): ViewModel() {
     var breakingNewsPage = 1
 
     init {
-        getBreakingNews("us")
+        getBreakingNews("covid")
     }
 
-    fun getBreakingNews(countryCode: String) = viewModelScope.launch {
+    fun getBreakingNews(searchQuery: String) = viewModelScope.launch {
         breakingNews.postValue(Resource.Loading())  //emit loading state and store in live data
-        val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
+        val response = newsRepository.getBreakingNews(searchQuery, breakingNewsPage)
         breakingNews.postValue(handleBreakingNewsResponse(response))
     }
 
