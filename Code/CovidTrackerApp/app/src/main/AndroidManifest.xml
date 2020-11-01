@@ -11,7 +11,7 @@
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="CovidTracker"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_covidlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,7 +20,16 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="11910000" />
-        <activity android:name=".SplashScreenActivity"/>
+
+        <activity android:name=".SplashScreenActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -30,12 +39,12 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation = "portrait">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <action android:name="android.intent.action.VIEW" />
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
+<!--            <action android:name="android.intent.action.VIEW" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
         </activity>
     </application>
 
