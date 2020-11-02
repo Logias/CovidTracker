@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
     tools:context=".MainActivity">
 
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome to CovidTracker"
         android:textStyle="bold"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="us"
+        android:entries="@array/preferences_location_title"
+        android:entryValues="@array/preferences_location_value"
+        android:key="location_preference"
+        android:title="Location" />
+</PreferenceScreen>
