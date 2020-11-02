@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+
     def retrofit_version = "2.9.0"
     def gson_version = "2.8.6"
 
@@ -72,5 +73,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     
     implementation 'com.llollox:androidtoggleswitch:2.0.1'
+    implementation 'com.android.support:design:28.0.0'
+
 
 }
