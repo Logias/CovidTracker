@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preferences_location_title">
+        <item>United States</item>
+        <item>Canada</item>
+        <item>Mexico</item>
+    </string-array>
+    <string-array name="preferences_location_value">
+        <item>us</item>
+        <item>ca</item>
+        <item>mx</item>
+    </string-array>
+</resources>

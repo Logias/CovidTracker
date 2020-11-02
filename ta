@@ -1,0 +1,100 @@
+[1mdiff --git a/Code/CovidTrackerApp/app/src/main/AndroidManifest.xml b/Code/CovidTrackerApp/app/src/main/AndroidManifest.xml[m
+[1mindex 3429cef..cb56584 100644[m
+[1m--- a/Code/CovidTrackerApp/app/src/main/AndroidManifest.xml[m
+[1m+++ b/Code/CovidTrackerApp/app/src/main/AndroidManifest.xml[m
+[36m@@ -6,7 +6,6 @@[m
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />[m
+     <uses-permission android:name="android.permission.INTERNET" />[m
+ [m
+[31m-[m
+     <application[m
+         android:name=".App"[m
+         android:allowBackup="true"[m
+[36m@@ -15,14 +14,12 @@[m
+         android:roundIcon="@mipmap/ic_covidlogo"[m
+         android:supportsRtl="true"[m
+         android:theme="@style/AppTheme">[m
+[31m-        <!--android:theme="@style/AppTheme"!-->[m
+[31m-[m
+[32m+[m[32m        <!-- android:theme="@style/AppTheme"! -->[m
+         <meta-data[m
+             android:name="com.google.android.gms.version"[m
+             android:value="11910000" />[m
+ [m
+         <activity android:name=".SplashScreenActivity">[m
+[31m-[m
+             <intent-filter>[m
+                 <action android:name="android.intent.action.MAIN" />[m
+                 <action android:name="android.intent.action.VIEW" />[m
+[36m@@ -35,16 +32,19 @@[m
+             android:name="com.google.android.geo.API_KEY"[m
+             android:value="AIzaSyAqzK1raHl0T4Dm5Dw6c2RmHYIEBh8iyNY" />[m
+ [m
+[31m-        <activity android:name=".MainActivity"[m
+[32m+[m[32m        <activity[m
+[32m+[m[32m            android:name=".MainActivity"[m
+             android:label="@string/app_name"[m
+[31m-            android:theme="@style/AppTheme.NoActionBar"[m
+[31m-            android:screenOrientation = "portrait">[m
+[31m-<!--        <intent-filter>-->[m
+[31m-<!--            <action android:name="android.intent.action.MAIN" />-->[m
+[31m-<!--            <action android:name="android.intent.action.VIEW" />-->[m
+[31m-[m
+[31m-<!--            <category android:name="android.intent.category.LAUNCHER" />-->[m
+[31m-<!--        </intent-filter>-->[m
+[32m+[m[32m            android:screenOrientation="portrait"[m
+[32m+[m[32m            android:theme="@style/AppTheme.NoActionBar">[m
+[32m+[m
+[32m+[m[32m            <!-- <intent-filter> -->[m
+[32m+[m[32m            <!-- <action android:name="android.intent.action.MAIN" /> -->[m
+[32m+[m[32m            <!-- <action android:name="android.intent.action.VIEW" /> -->[m
+[32m+[m
+[32m+[m
+[32m+[m[32m            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->[m
+[32m+[m[32m            <!-- </intent-filter> -->[m
+         </activity>[m
+     </application>[m
+ [m
+[1mdiff --git a/Code/CovidTrackerApp/app/src/main/java/com/example/covidtracker/MainActivity.kt b/Code/CovidTrackerApp/app/src/main/java/com/example/covidtracker/MainActivity.kt[m
+[1mindex 22f07f4..abbe670 100644[m
+[1m--- a/Code/CovidTrackerApp/app/src/main/java/com/example/covidtracker/MainActivity.kt[m
+[1m+++ b/Code/CovidTrackerApp/app/src/main/java/com/example/covidtracker/MainActivity.kt[m
+[36m@@ -1,8 +1,11 @@[m
+ package com.example.covidtracker[m
+ [m
+[32m+[m[32mimport android.content.Intent[m
+ import android.graphics.Color[m
+ import android.os.Bundle[m
+ import android.view.Menu[m
+[32m+[m[32mimport android.view.MenuItem[m
+[32m+[m[32mimport android.widget.Toast[m
+ import androidx.appcompat.app.AppCompatActivity[m
+ import androidx.appcompat.widget.Toolbar[m
+ import androidx.drawerlayout.widget.DrawerLayout[m
+[36m@@ -14,6 +17,7 @@[m [mimport com.example.covidtracker.db.ArticleDatabase[m
+ import com.example.covidtracker.repository.NewsRepository[m
+ import com.google.android.material.navigation.NavigationView[m
+ [m
+[32m+[m
+ class MainActivity : AppCompatActivity() {[m
+     lateinit var viewModel: NewsViewModel[m
+ [m
+[36m@@ -50,6 +54,18 @@[m [mclass MainActivity : AppCompatActivity() {[m
+         return true[m
+     }[m
+ [m
+[32m+[m[32m    override fun onOptionsItemSelected(item: MenuItem?) : Boolean {[m
+[32m+[m[32m        val id = item!!.itemId[m
+[32m+[m[32m        return if (id == R.id.action_settings) {[m
+[32m+[m[32m            // goes to settings fragment[m
+[32m+[m[32m            Toast.makeText(applicationContext, "Settings clicked successfully", Toast.LENGTH_LONG).show()[m
+[32m+[m[32m            // Need to rewrite Settings fragment because it keeps crashing[m
+[32m+[m[32m            true[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            false[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+     override fun onSupportNavigateUp(): Boolean {[m
+         val navController =[m
+             Navigation.findNavController(this, R.id.nav_host_fragment)[m
