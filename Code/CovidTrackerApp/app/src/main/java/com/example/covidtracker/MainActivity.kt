@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         return if (id == R.id.action_settings) {
             // goes to settings fragment
             Toast.makeText(applicationContext, "Settings clicked successfully", Toast.LENGTH_LONG).show()
-            // Need to rewrite Settings fragment because it keeps crashing
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             true
         } else {
             false
