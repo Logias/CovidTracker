@@ -36,7 +36,7 @@ class CountryDataFragment : Fragment() {
         val stateDao = StatesDatabase.getInstance(requireContext()).stateDao
         val repository = CovidDataRepository(usaDao, stateDao)
         val factory = CovidDataViewModelFactory(repository)
-        ViewModelProvider(this, factory).get(CovidDataViewModel::class.java)
+        ViewModelProvider(requireActivity(), factory).get(CovidDataViewModel::class.java)
     }
 
     override fun onCreateView(

@@ -71,6 +71,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
     
     implementation 'com.llollox:androidtoggleswitch:2.0.1'
     implementation 'com.android.support:design:28.0.0'

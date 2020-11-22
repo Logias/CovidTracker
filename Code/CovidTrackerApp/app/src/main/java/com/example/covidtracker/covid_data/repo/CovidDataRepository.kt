@@ -43,7 +43,8 @@ class CovidDataRepository(private val usaDao: USADao, private val stateDao: Stat
             "United States Virgin Islands",
             "Guam",
             "Puerto Rico",
-            "District Of Columbia"
+            "District Of Columbia",
+            "American Samoa"
         )
 
         return try {
