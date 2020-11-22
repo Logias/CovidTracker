@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 import com.bumptech.glide.Glide
 import com.example.covidtracker.R
 import com.example.covidtracker.covid_data.database.StatesDatabase
@@ -39,6 +41,10 @@ class CountryDataFragment : Fragment() {
         ViewModelProvider(requireActivity(), factory).get(CovidDataViewModel::class.java)
     }
 
+    private val loadingProgressBar by lazy {
+        MaterialDialog(requireContext()).customView(R.layout.loading_status)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,6 +64,7 @@ class CountryDataFragment : Fragment() {
     private fun observeUpdateStatus() {
         covidDataViewModel.updateStatus.observe(viewLifecycleOwner, Observer { updateStatus ->
             updateStatus?.let { success ->
+                loadingProgressBar.dismiss()
                 if (success) {
                     Toast.makeText(requireContext(), "Update completed", Toast.LENGTH_SHORT).show()
                 } else {
@@ -210,6 +217,7 @@ class CountryDataFragment : Fragment() {
 
     private fun setRefreshButtonListener() {
         binding.refreshButton.setOnClickListener {
+            loadingProgressBar.show()
             covidDataViewModel.getUpdatedData()
         }
     }

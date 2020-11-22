@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,10 @@ class StatesDataFragment : Fragment() {
 
     private val adapter by lazy {
         StatesAdapter(requireActivity())
+    }
+
+    private val loadingProgressBar by lazy {
+        MaterialDialog(requireContext()).customView(R.layout.loading_status)
     }
 
     private val covidDataViewModel by lazy {
@@ -84,6 +89,7 @@ class StatesDataFragment : Fragment() {
 
     private fun setRefreshButtonListener() {
         binding.refreshButton.setOnClickListener {
+            loadingProgressBar.show()
             covidDataViewModel.getUpdatedData()
         }
     }
@@ -91,6 +97,7 @@ class StatesDataFragment : Fragment() {
     private fun observeUpdateStatus() {
         covidDataViewModel.updateStatus.observe(viewLifecycleOwner, Observer { updateStatus ->
             updateStatus?.let { success ->
+                loadingProgressBar.dismiss()
                 if (success) {
                     Toast.makeText(requireContext(), "Update completed", Toast.LENGTH_SHORT).show()
                 } else {
@@ -155,7 +162,7 @@ class StatesAdapter(val context: Activity) : RecyclerView.Adapter<StatesAdapter.
         val deaths = stateData.deaths.toFloat()
 
         val todayCases = stateData.todayCases.toFloat()
-        val todayRecovered = 0F // TODO set this n/a
+        val todayRecovered = 0F
         val todayDeaths = stateData.todayDeaths.toFloat()
 
         stateData.apply {
@@ -296,12 +303,21 @@ class StatesAdapter(val context: Activity) : RecyclerView.Adapter<StatesAdapter.
             itemView.total_recovered.text = stateData.recovered.toString()
             itemView.total_deaths.text = stateData.deaths.toString()
             itemView.state_flag.setImageResource(getFlagDrawableID(stateData.state))
+
+            setAnimation(itemView)
         }
 
         private fun getFlagDrawableID(stateName: String): Int {
             val context = App.getAppContext()
             val drawableName = stateName.replace(" ", "_").toLowerCase()
             return context.resources.getIdentifier(drawableName, "drawable", context.packageName)
+        }
+
+        /**
+         * Set recycler view scrolling animation
+         */
+        private fun setAnimation(view: View) {
+            view.animation = AnimationUtils.loadAnimation(view.context, R.anim.fade_in)
         }
 
     }
