@@ -16,7 +16,7 @@
         android:label="Do I have Covid-19?"
         tools:layout="@layout/fragment_covid_diag" />
     <fragment
-        android:id="@id/aboutActivity"
+        android:id="@id/aboutFragment"
         android:name="com.example.covidtracker.AboutActivity"
         android:label="About"
         tools:layout="@layout/activity_about" />

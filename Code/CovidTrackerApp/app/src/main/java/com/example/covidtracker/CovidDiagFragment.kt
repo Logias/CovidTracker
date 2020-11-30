@@ -85,7 +85,7 @@ class CovidDiagFragment : Fragment() {
                 val navController = Navigation.findNavController(
                     requireActivity().findViewById(R.id.nav_host_fragment)
                 )
-                navController.navigate(R.id.action_diag_to_result)
+
             }
         })
         return root
