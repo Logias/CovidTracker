@@ -16,11 +16,16 @@
         android:label="Do I have Covid-19?"
         tools:layout="@layout/fragment_covid_diag" />
     <fragment
+        android:id="@id/aboutActivity"
+        android:name="com.example.covidtracker.AboutActivity"
+        android:label="About"
+        tools:layout="@layout/activity_about" />
+    <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.covidtracker.NewsFragment"
-        android:label="NewsFragment" />
+        android:label="News" />
     <fragment
         android:id="@+id/charity_frag"
         android:name="com.example.covidtracker.CharityFragment"
-        android:label="CharityFragment" />
+        android:label="Charity" />
 </navigation>
