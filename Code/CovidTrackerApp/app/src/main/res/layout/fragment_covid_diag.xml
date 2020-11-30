@@ -24,7 +24,7 @@
         android:text="Please answer the following questions in order to determine whether you could have Covid-19 or not."
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/covidDiagTitle" />
 
@@ -128,7 +128,7 @@
         android:layout_marginTop="12dp"
         android:text="How long have you been experiencing these symptoms?"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
@@ -187,7 +187,7 @@
         android:id="@+id/agePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="20dp"
         android:text="What is your current age?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -198,23 +198,28 @@
         android:id="@+id/ageEntry"
         android:layout_width="39dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="18dp"
+        android:imeActionLabel="Done"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="phone"
+        android:digits="1234567890"
+        android:text="0"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agePrompt"
-        android:imeOptions="actionDone"
-        android:imeActionLabel="Done"
-        android:maxLines="1"/>
+        app:layout_constraintTop_toBottomOf="@+id/agePrompt" />
 
     <Button
         android:id="@+id/analyzeButton"
         android:layout_width="125dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="44dp"
         android:text="Analyze"
+        app:layout_constraintTop_toBottomOf="@+id/ageEntry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageEntry" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

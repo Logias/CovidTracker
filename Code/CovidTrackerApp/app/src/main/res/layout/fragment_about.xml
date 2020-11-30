@@ -63,6 +63,7 @@
         android:layout_height="133dp"
         android:layout_marginBottom="268dp"
         android:text="CovidTracker provides world class news, analysis, and data for anything pertaining to Covid-19. Founded in 2020, we have become the essential source for Covid-19 updates and resources. Our mission is to help aid as many people as possible by creating an application that has every information and functionalities related to Covid-19 so the pandemic can slow and eventually come to a halt. Today, we provide the most actionable mobile app data and insights in the industry."
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
