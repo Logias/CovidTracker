@@ -7,12 +7,8 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context="com.example.covidtracker.SupportActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    <EditText
+
+
         android:id="@+id/edit_text_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,5 +38,15 @@
         android:id="@+id/button_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="send" />
+        android:text="send"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        app:fab_size="normal"
+        android:src="@drawable/ic_baseline_message_24"
+        />
 </LinearLayout>

@@ -28,4 +28,8 @@
         android:id="@+id/charity_frag"
         android:name="com.example.covidtracker.CharityFragment"
         android:label="Charity" />
+    <fragment
+        android:id="@+id/supportActivity"
+        android:name="com.example.covidtracker.SupportActivity"
+        android:label="Support" />
 </navigation>
