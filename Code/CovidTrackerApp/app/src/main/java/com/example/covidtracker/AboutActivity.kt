@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 class AboutActivity : Fragment() {
-    private var aboutViewModel: AboutViewModel? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
         val root = inflater.inflate(R.layout.activity_about, container, false)
         return root
     }
