@@ -1,6 +1,5 @@
 package com.example.covidtracker
 
-import android.R.attr.data
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -82,7 +81,7 @@ class CovidDiagFragment : Fragment() {
                     }
                 }
 
-                /*Uses the activity's navigation controller to change fragments to the login fragment*/
+                /*Uses the activity's navigation controller to change fragments to the results fragment*/
                 val navController = Navigation.findNavController(
                     requireActivity().findViewById(R.id.nav_host_fragment)
                 )

@@ -23,10 +23,6 @@
         <item
             android:id="@+id/charity_frag"
             android:title="@string/menu_charity" />
-
-        <item
-
-            android:title="Nearby Medical Centers" />
         <item
             android:id="@+id/fragment_support"
             android:title="Support" />

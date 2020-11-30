@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -27,7 +26,6 @@ class CovidDiagResultsFragment : Fragment() {
         val json: String? = sharedPref?.getString("Symptoms List", null)
         val type: Type = object : TypeToken<java.util.ArrayList<String?>?>() {}.type
         val symptomsSet: ArrayList<String> = gson.fromJson(json, type)
-        //val symptomsSet = sharedPref?.getStringSet("Symptoms List", null)
         val symptomsDate = sharedPref?.getString("Symptoms Date", null)
         val ageEntry = sharedPref?.getInt("Age Entry", 0)
         if (symptomsSet != null) {
