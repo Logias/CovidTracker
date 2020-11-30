@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         val covidDiag = navigationView.menu.findItem(R.id.covid_diag_frag)
         val charity = navigationView.menu.findItem(R.id.charity_frag)
+        val support = navigationView.menu.findItem(R.id.fragment_support)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

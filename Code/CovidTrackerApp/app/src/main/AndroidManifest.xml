@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_covidlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SupportActivity"></activity>
         <!-- android:theme="@style/AppTheme"! -->
         <meta-data
             android:name="com.google.android.gms.version"
