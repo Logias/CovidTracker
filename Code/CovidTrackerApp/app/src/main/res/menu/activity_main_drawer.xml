@@ -27,5 +27,8 @@
         <item
 
             android:title="Nearby Medical Centers" />
+        <item
+            android:id="@+id/fragment_support"
+            android:title="Support" />
     </group>
 </menu>
