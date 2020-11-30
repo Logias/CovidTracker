@@ -1,67 +1,94 @@
 package com.example.covidtracker
 
-import android.content.ContentValues.TAG
+import android.R.attr.data
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import kotlinx.android.synthetic.main.fragment_covid_diag.*
+import com.google.gson.Gson
+import java.lang.Integer.parseInt
+
 
 class CovidDiagFragment : Fragment() {
-    private var covidDiagViewModel: CovidDiagViewModel? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        covidDiagViewModel = ViewModelProvider(this).get(CovidDiagViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_covid_diag, container, false)
 
         val chipGroup1 = root.findViewById<ChipGroup>(R.id.chipGroup)
         val chipGroup2 = root.findViewById<ChipGroup>(R.id.chipGroup2)
         val analyzeButton = root.findViewById<Button>(R.id.analyzeButton)
         val ageEntry = root.findViewById<EditText>(R.id.ageEntry)
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
 
-
-        chipGroup2.setOnCheckedChangeListener { group, checkedId: Int ->
-            val chip: Chip? = root.findViewById(checkedId)
-            chip?.let {
-                // Show the checked chip text on toast message
-                Log.e(TAG, chip.text as String)
-                // Do code here to pass Chip data to analyze frag using FragmentManager
-            }
-        }
-
-
-        //this button should pass all the data including the age into next frag
         analyzeButton.setOnClickListener(View.OnClickListener {
-            var msg = "Chips checked are:"
-            val chipsCount = chipGroup1.childCount
-            if (chipsCount == 0) {
-                msg += " None!!"
+            var symptomsList = ArrayList<String>()
+            var symptomsDate = ""
+            val chips1Count = chipGroup1.childCount
+            val chips2Count = chipGroup2.childCount
+
+            var i = 0
+            while (i < chips2Count) {
+                val chip = chipGroup2.getChildAt(i) as Chip
+                if (chip.isChecked) {
+                    symptomsDate = chip.text.toString()
+                    break
+                }
+                i++
+            }
+
+            var numeric = true
+            try {
+                val num = parseInt(ageEntry.text.toString())
+            } catch (e: NumberFormatException) {
+                numeric = false
+            }
+
+            if (symptomsDate == "") {
+                Toast.makeText(
+                    activity,
+                    "Please select the time indicating how long you've been experiencing symptoms.",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (!numeric || ageEntry.text.toString() == "0") {
+                Toast.makeText(activity, "Please enter a valid number for age", Toast.LENGTH_LONG)
+                    .show()
             } else {
-                var i = 0
-                while (i < chipsCount) {
+                i = 0
+                while (i < chips1Count) {
                     val chip = chipGroup1.getChildAt(i) as Chip
                     if (chip.isChecked) {
-                        msg += chip.text.toString() + " "
+                        symptomsList.add(chip.text.toString())
                     }
                     i++
                 }
+                if (sharedPref != null) {
+                    with(sharedPref.edit()) {
+                        val gson = Gson()
+                        val json: String = gson.toJson(symptomsList)
+                        putString("Symptoms List", json)
+                        putString("Symptoms Date", symptomsDate)
+                        putInt("Age Entry", parseInt(ageEntry.text.toString()))
+                        apply()
+                    }
+                }
+
+                /*Uses the activity's navigation controller to change fragments to the login fragment*/
+                val navController = Navigation.findNavController(
+                    requireActivity().findViewById(R.id.nav_host_fragment)
+                )
+                navController.navigate(R.id.action_diag_to_result)
             }
-            // show message
-            Log.e(TAG, msg)
         })
-
-
         return root
     }
 }
