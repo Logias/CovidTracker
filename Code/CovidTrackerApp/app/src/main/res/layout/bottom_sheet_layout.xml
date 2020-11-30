@@ -3,19 +3,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
     android:padding="8dp">
-
-
 
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="16dp"
-        app:strokeColor="#D5D5D5"
-        app:strokeWidth="1dp">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,7 +20,7 @@
                 android:id="@+id/country_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="United States"
+                android:text="California"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent=".6" />
+                app:layout_constraintGuide_percent=".65" />
 
             <View
                 android:id="@+id/divider1"
@@ -264,40 +258,6 @@
                 app:layout_constraintEnd_toEndOf="@id/today_deaths_label"
                 app:layout_constraintStart_toStartOf="@id/today_deaths_label"
                 app:layout_constraintTop_toBottomOf="@id/today_deaths_label" />
-
-
-            <TextView
-                android:id="@+id/last_updated_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Last updated: "
-                android:textSize="12sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/last_updated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="October 3, 2020 @ 12:00 AM"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                app:layout_constraintStart_toEndOf="@id/last_updated_label"
-                app:layout_constraintTop_toTopOf="@id/last_updated_label" />
-
-            <ImageButton
-                android:id="@+id/refresh_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:src="@drawable/ic_baseline_refresh_24"
-                android:background="@null"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/last_updated_label"
-                app:layout_constraintBottom_toBottomOf="@id/last_updated_label"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
