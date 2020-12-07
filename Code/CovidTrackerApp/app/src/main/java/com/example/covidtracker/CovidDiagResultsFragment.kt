@@ -46,7 +46,7 @@ class CovidDiagResultsFragment : Fragment() {
                     resultDescr.text = "Covid-19 symptoms may take from 2-14 days to show up. There is still a probability it is Covid-19 but it is most likely another infection."
                 } else if (symptomsDate == "Over 2 Weeks") {
                     resultTitle.text = "Unlikely"
-                    resultDescr.text = "Covid-19 symptoms usually expire after 2 weeks so it's more likely to be another infection."
+                    resultDescr.text = "Mild Covid-19 symptoms usually expire after 2 weeks so it's more likely to be another infection or a severe case."
                 } else {
                     resultTitle.text = "Likely"
                     resultDescr.text = "Covid-19 symptoms show up 2-14 days after exposure with these symptoms. Please get tested and self isolate for 14 days."

@@ -14,12 +14,20 @@
         android:id="@id/covid_diag_frag"
         android:name="com.example.covidtracker.CovidDiagFragment"
         android:label="Do I have Covid-19?"
-        tools:layout="@layout/fragment_covid_diag" />
+        tools:layout="@layout/fragment_covid_diag" >
+        <action
+            android:id="@+id/action_diag_to_result"
+            app:destination="@+id/covid_diag_results_frag"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@id/aboutFragment"
         android:name="com.example.covidtracker.AboutActivity"
         android:label="About"
-        tools:layout="@layout/activity_about" />
+        tools:layout="@layout/fragment_about" />
+
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.covidtracker.NewsFragment"
@@ -29,7 +37,8 @@
         android:name="com.example.covidtracker.CharityFragment"
         android:label="Charity" />
     <fragment
-        android:id="@+id/supportActivity"
-        android:name="com.example.covidtracker.SupportActivity"
-        android:label="Support" />
+        android:id="@+id/covid_diag_results_frag"
+        android:name="com.example.covidtracker.CovidDiagResultsFragment"
+        android:label="Results"
+        tools:layout="@layout/fragment_covid_diag_results"/>
 </navigation>
